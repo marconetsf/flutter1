@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Task.dart';
-import 'ColorFull.dart';
-import 'MyFirstWidget.dart';
+import 'task.dart';
 
 void main() {
   runApp(MyApp());
@@ -64,3 +62,4 @@ class _MyAppState extends State<MyApp> {
     ),);
   }
 }
+

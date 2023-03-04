@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'difficulty.dart';
 
 class Task extends StatefulWidget {
   final String task;
   final String photo;
-  final int dificuldade;
+  final int difficulty;
 
-  const Task(this.task, this.dificuldade, this.photo, {Key? key})
+  const Task(this.task, this.difficulty, this.photo, {Key? key})
       : super(key: key);
 
   @override
@@ -13,7 +14,7 @@ class Task extends StatefulWidget {
 }
 
 class _TaskState extends State<Task> {
-  int nivel = 1;
+  int level = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -74,35 +75,35 @@ class _TaskState extends State<Task> {
                                 children: [
                                   Icon(
                                     Icons.star,
-                                    color: widget.dificuldade >= 1
+                                    color: widget.difficulty >= 1
                                         ? Colors.blue
                                         : Colors.blue[100],
                                     size: 15,
                                   ),
                                   Icon(
                                     Icons.star,
-                                    color: widget.dificuldade >= 2
+                                    color: widget.difficulty >= 2
                                         ? Colors.blue
                                         : Colors.blue[100],
                                     size: 15,
                                   ),
                                   Icon(
                                     Icons.star,
-                                    color: widget.dificuldade >= 3
+                                    color: widget.difficulty >= 3
                                         ? Colors.blue
                                         : Colors.blue[100],
                                     size: 15,
                                   ),
                                   Icon(
                                     Icons.star,
-                                    color: widget.dificuldade >= 4
+                                    color: widget.difficulty >= 4
                                         ? Colors.blue
                                         : Colors.blue[100],
                                     size: 15,
                                   ),
                                   Icon(
                                     Icons.star,
-                                    color: widget.dificuldade >= 5
+                                    color: widget.difficulty >= 5
                                         ? Colors.blue
                                         : Colors.blue[100],
                                     size: 15,
@@ -117,47 +118,22 @@ class _TaskState extends State<Task> {
                         child: ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                nivel++;
+                                level++;
                               });
-                              print(nivel);
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const Icon(Icons.arrow_drop_up),
-                                Text("Up"),
+                                const Text('Up'),
                               ],
                             )),
                       )
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Container(
-                        child: LinearProgressIndicator(
-                          color: Colors.white,
-                          value: (widget.dificuldade > 0)
-                              ? ((nivel / widget.dificuldade * 2) / 10)
-                              : 1,
-                        ),
-                        width: 200,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        'Nivel $nivel',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
+                Difficulty(level: level, difficultLevel: widget.difficulty,),
               ],
             )
           ],
@@ -166,3 +142,4 @@ class _TaskState extends State<Task> {
     );
   }
 }
+
