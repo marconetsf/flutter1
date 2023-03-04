@@ -34,8 +34,8 @@ class _MyAppState extends State<MyApp> {
           opacity: opacidade == true ? 1 : 0,
           child: ListView(
             children: const [
-              Task('Aprender Flutter', 0,
-                  'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large'),
+              Task('Dar Beijo', 0,
+                  'https://github.com/tassany.png'),
               Task('Aprender Material Design', 4,
                   'https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg'),
               Task('Aprender Cupertino Design', 5,
