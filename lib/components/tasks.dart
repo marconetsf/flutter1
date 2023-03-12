@@ -1,4 +1,3 @@
-
 import 'package:nosso_primeiro_projeto/components/difficulty.dart';
 import 'package:flutter/material.dart';
 
@@ -57,12 +56,19 @@ class _TasksState extends State<Tasks> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(4),
-                          child: Image.asset(
-                            widget.foto,
-                            height: 100,
-                            width: 72,
-                            fit: BoxFit.cover,
-                          ),
+                          child: widget.foto.contains('http')
+                              ? Image.network(
+                                  widget.foto,
+                                  height: 100,
+                                  width: 72,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(
+                                  widget.foto,
+                                  height: 100,
+                                  width: 72,
+                                  fit: BoxFit.cover,
+                                ),
                         ),
                       ),
                       Column(
