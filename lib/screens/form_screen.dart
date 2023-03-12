@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:nosso_primeiro_projeto/data/task_inherited.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({Key? key, required this.taskContext}) : super(key: key);
   final BuildContext taskContext;
+
+  const FormScreen({Key? key, required this.taskContext}) : super(key: key);
+
   @override
   State<FormScreen> createState() => _FormScreenState();
 }
@@ -20,7 +22,7 @@ class _FormScreenState extends State<FormScreen> {
       key: _formKey,
       child: Scaffold(
         appBar:
-            AppBar(title: Text('Nova Tarefa')),
+            AppBar(title: Text('New Task')),
         body: Center(
           child: SingleChildScrollView(
             child: Container(
@@ -39,7 +41,7 @@ class _FormScreenState extends State<FormScreen> {
                       validator: (String? value) {
                         if (value != null) {
                           if (value.isEmpty) {
-                            return 'insira o nome da tarefa';
+                            return 'Insert new task name';
                           }
                         }
                         return null;
@@ -47,7 +49,7 @@ class _FormScreenState extends State<FormScreen> {
                       controller: nameController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Nome',
+                        hintText: 'Name',
                         fillColor: Colors.white70,
                         filled: true,
                       ),
@@ -61,7 +63,7 @@ class _FormScreenState extends State<FormScreen> {
                           if (value.isEmpty ||
                               int.parse(value) < 1 ||
                               int.parse(value) > 5) {
-                            return 'insira uma dificuldade entre 1 e 5';
+                            return 'Insert a difficult between 1 and 5';
                           }
                         }
                         return null;
@@ -70,7 +72,7 @@ class _FormScreenState extends State<FormScreen> {
                       controller: difficultyController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Dificuldade',
+                        hintText: 'Difficulty',
                         fillColor: Colors.white70,
                         filled: true,
                       ),
@@ -82,7 +84,7 @@ class _FormScreenState extends State<FormScreen> {
                       validator: (String? value) {
                         if (value != null) {
                           if (value.isEmpty) {
-                            return 'insira uma url';
+                            return 'Insert an URL';
                           }
                         }
                         return null;
@@ -94,7 +96,7 @@ class _FormScreenState extends State<FormScreen> {
                       controller: imageController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Imagem',
+                        hintText: 'Image',
                         fillColor: Colors.white70,
                         filled: true,
                       ),
@@ -106,7 +108,7 @@ class _FormScreenState extends State<FormScreen> {
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: Colors.blue),
+                      border: Border.all(width: 2, color: Colors.black),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
@@ -126,19 +128,16 @@ class _FormScreenState extends State<FormScreen> {
                   ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print(difficultyController.text);
-                          print(nameController.text);
-                          print(nameController.text);
                           TaskInherited.of(widget.taskContext).newTask(nameController.text, imageController.text, int.parse(difficultyController.text));
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content: Text('Printando nova tarefa'),
+                              content: Text('New task was added'),
                             ),
                           );
                           Navigator.pop(context);
                         }
                       },
-                      child: const Text('Adicionar')),
+                      child: const Text('Add')),
                 ],
               ),
             ),

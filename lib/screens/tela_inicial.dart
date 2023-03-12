@@ -15,11 +15,11 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter: Primeiros Passos'),
-        leading: Icon(Icons.add_task),
+        title: const Text('Flutter: Task List'),
+        leading: const Icon(Icons.add_task),
       ),
       body: Container(
-        color: Color.fromARGB(255, 208, 221, 237),
+        color: const Color.fromARGB(255, 208, 221, 237),
         child: ListView(
           children: TaskInherited.of(context).tasksList,
         ),
@@ -29,7 +29,9 @@ class _InitialScreenState extends State<InitialScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (contextNew) => FormScreen(taskContext: context,),
+              builder: (contextNew) => FormScreen(
+                taskContext: context,
+              ),
             ),
           );
         },
